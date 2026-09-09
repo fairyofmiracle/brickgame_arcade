@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  brickgame:
+    build: .
+    container_name: brickgame-python
+    ports:
+      - "8007:8007"
+    volumes:
+      # Hot-reload for web UI assets (Canvas client).
+      # Keep it narrow to avoid overriding compiled native_bridge artifacts inside the image.
+      - ./src/brick_game/gui/web/static:/app/src/brick_game/gui/web/static
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    restart: unless-stopped
+
+  wasm-build:
+    # One-shot helper service. It should not start during normal `up`.
+    # Run explicitly via: `docker compose --profile wasm run --rm wasm-build`
+    profiles: ["wasm"]
+    build:
+      context: .
+      dockerfile: Dockerfile.wasm
+    container_name: brickgame-wasm-build
+    volumes:
+      - ./:/work
+    working_dir: /work
+    # One-shot build container (no ports).
+    restart: "no"
+

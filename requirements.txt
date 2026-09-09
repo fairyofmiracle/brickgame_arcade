@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+httpx
+requests
+coverage
+pytest
+pycodestyle
+

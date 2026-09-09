@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\author{Tablebri}
+
+\begin{document}
+
+\title{Documentation for the project BrickGame v1.0 aka Tetris}
+\date{}
+\maketitle
+
+\section{Introduction}
+
+The BrickGame v1.0 aka Tetris project is an implementation of the classic arcade game Tetris using the C programming language and the ncurses library for the terminal interface.
+
+\section{Project structure}
+
+\subsection{Library Tetris (\texttt{src/brick\_game/tetris})}
+
+\begin{itemize}[label=--]
+    \item Source code files that implement the logic of the Tetris game.
+    \item Basic functions for interacting with the playing field, manipulating pieces, and handling user input.
+    \item Implementation of a finite state machine to formalize the game logic.
+\end{itemize}
+
+\subsection{Terminal interface (\texttt{src/gui/cli})}
+
+\begin{itemize}[label=--]
+    \item Source code files responsible for rendering the game in the terminal using the ncurses library.
+    \item Implementation of rendering the playing field, managing user input and displaying the current state of the game.
+\end{itemize}
+
+\section{Build the project}
+
+The project uses a build system \texttt{make} whith Makefile, including the following goals:
+
+\begin{itemize}
+    \item \texttt{all}: Build the project.
+    \item \texttt{install}: Installing the program on the system.
+    \item \texttt{uninstall}: Removing a program from the system.
+    \item \texttt{clean}: Cleaning temporary files and folders.
+    \item \texttt{dvi}: Creating a file DVI.
+    \item \texttt{dist}: Creating an archive containing the necessary files to build and use the program.
+\end{itemize}
+
+\section{Runtime requirements}
+
+The project involves the use of the C11 programming language, the gcc compiler and the ncurses library for the terminal interface.
+
+\section{Installation and Startup Instructions}
+
+\begin{enumerate}
+    \item \textbf{Installing dependencies:}
+        \begin{itemize}
+            \item Make sure you have gcc compiler installed.
+            \item Install the ncurses library.
+        \end{itemize}
+    \item \textbf{Build the project:}
+        \begin{itemize}
+            \item Execute \texttt{make all} to build the project.
+        \end{itemize}
+    \item \textbf{:}
+        \begin{itemize}
+            \item Execute \texttt{make install} to install the program on the system.
+        \end{itemize}
+    \item \textbf{Start:}
+        \begin{itemize}
+            \item Execute \texttt{make run} to run the program.
+        \end{itemize}
+\end{enumerate}
+
+\section{Using the program}
+
+\begin{enumerate}
+    \item \textbf{Control:}
+        \begin{itemize}
+            \item Use the left and right arrows to move the shape horizontally.
+            \item Press the down key to drop the figure.
+            \item Other keys for additional actions.
+            \item To rotate the shape, use z or the up arrow.
+            \item To pause the game, use p.
+            \item To unpause the game, use p again.
+            \item To exit the game use q.
+        \end{itemize}
+    \item \textbf{Game mechanics:}
+        \begin{itemize}
+            \item Rotating and moving figures.
+            \item Acceleration of the figure's fall.
+            \item Show the next figure.
+            \item Destroying filled lines.
+            \item The game ends when the upper limit of the playing field is reached.
+        \end{itemize}
+    \item \textbf{Ending the game:}
+        \begin{itemize}
+            \item The game ends when the upper limit of the playing field is reached.
+        \end{itemize}
+\end{enumerate}
+
+\section{Testing}
+
+The project includes unit tests using the check library. Library test coverage is at least 80\%.
+
+\end{document}

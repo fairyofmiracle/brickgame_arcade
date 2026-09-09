@@ -1,0 +1,39 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* Fallback page background (canvas paints the sky). */
+    background: #5b56b9;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    cursor: default;
+}
+
+/* Optional custom arcade font (drop file into static/fonts/arcade.ttf) */
+@font-face {
+    font-family: "ArcadeLocal";
+    src: url("./fonts/arcade.ttf") format("truetype");
+    font-display: swap;
+}
+
+/* soft ambient lights */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: none;
+    opacity: 0;
+}
+
+#game-canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+

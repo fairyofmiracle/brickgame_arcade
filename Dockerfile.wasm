@@ -1,0 +1,12 @@
+FROM emscripten/emsdk:3.1.64
+
+WORKDIR /work
+
+# `git` is handy for some emsdk tooling; keep minimal deps.
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
+
+# Default command: build wasm artifacts into mounted repo.
+CMD ["bash", "-lc", "sed -i 's/\\r$//' src/brick_game/gui/web/wasm/build_wasm.sh && chmod +x src/brick_game/gui/web/wasm/build_wasm.sh && bash src/brick_game/gui/web/wasm/build_wasm.sh"]
+
